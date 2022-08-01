@@ -29,3 +29,43 @@ let AlmacenamientoTareas =[
         "El pez me contesto con burbujas"
     )
 ];
+
+// TAREAS
+
+const AgregarTarea =(tarea)=>{
+    AlmacenamientoTareas.push(tarea);
+}
+
+const EditarTarea = (tarea)=>{
+    AlmacenamientoTareas = AlmacenamientoTareas.map(function(item){
+        return item.Codigo == tarea.Codigo ? tarea : item;
+    })
+}
+
+const BorrarTarea = function (codigo) {
+    AlmacenamientoTareas = AlmacenamientoTareas.filter(function(item){
+        return item.codigo !== codigo;
+    });
+}
+
+const ReporteTodasTareas = function () {
+    return AlmacenamientoTareas;
+}
+
+const ReporteTareasEnCurso = function () {
+    return AlmacenamientoTareas.filter(function(item){
+        return item.estado == 'en-curso';
+    });
+}
+
+const ReporteTareasPendientes = function () {
+    return AlmacenamientoTareas.filter(function(item){
+        return item.estado == 'pendiente';
+    });
+}
+
+const ReproteTareasTerminadas = function () {
+    return AlmacenamientoTareas.filter(function(item){
+        return item.estado == 'terminada';
+    });
+}
